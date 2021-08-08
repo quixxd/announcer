@@ -8,20 +8,12 @@ let voices = []; // global array of available voices
 
 // Load from storage to the UI list
 storageToList();
+updateVoicesList();
 
 let timerVoice = null;
 
-window.speechSynthesis.onvoiceschanged = () => {
-  // Get List of Voices
-  voices = window.speechSynthesis.getVoices();
 
-  // Initially set the First Voice in the Array.
-  speech.voice = voices[0];
-
-  // Set the Voice Select List. (Set the Index as the value, which we'll use later when the user updates the Voice using the Select Menu.)
-  let voiceSelect = document.querySelector("#voices");
-  voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)));
-};
+window.speechSynthesis.onvoiceschanged = () => updateVoicesList();
 
 
 document.querySelector("#rate").addEventListener("input", () => {
@@ -65,6 +57,18 @@ document.querySelector("#voices").addEventListener("change", () => {
 document.querySelector("#bell").addEventListener("click", () => bell());
 
 document.querySelector("#voice").addEventListener("click", () => voice());
+
+function updateVoicesList() {
+  // Get List of Voices
+  voices = window.speechSynthesis.getVoices();
+
+  // Initially set the First Voice in the Array.
+  speech.voice = voices[0];
+
+  // Set the Voice Select List. (Set the Index as the value, which we'll use later when the user updates the Voice using the Select Menu.)
+  let voiceSelect = document.querySelector("#voices");
+  voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)));
+}
 
 function bell() {
   var audio = new Audio('bell.mp3');
