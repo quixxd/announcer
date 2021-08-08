@@ -15,6 +15,11 @@ let timerVoice = null;
 
 window.speechSynthesis.onvoiceschanged = () => updateVoicesList();
 
+// Demo
+document.querySelector("#demo").addEventListener("click", () => {
+  demo();
+});
+
 
 document.querySelector("#rate").addEventListener("input", () => {
   // Get rate Value from the input
@@ -76,6 +81,13 @@ function bell() {
   timerVoice = setTimeout(voice, 2500);
 }
 
+function demo() {
+  document.querySelector("textarea").value = "This is a demonstration. You can change this text as you wish.";
+  bell();
+}
+
+
+
 function voice() {
   // Set the text property with the value of the textarea
   speech.text = document.querySelector("textarea").value;
@@ -94,6 +106,12 @@ document.querySelector("#stop").addEventListener("click", () => {
   }
 });
 
+function activateTab(tabName) {
+  var sel = document.querySelector(tabName);
+  var tab = bootstrap.Tab.getOrCreateInstance(sel);
+  tab.show();
+}
+
 //
 // Select box
 //
@@ -106,10 +124,12 @@ document.querySelector("#add").addEventListener("click", () => {
   option.text = document.querySelector("textarea").value;
   document.querySelector("#selector").add(option);
   listToStorage();
+  activateTab("#storage-tab");
 });
 
 document.querySelector("#edit").addEventListener("click", () => {
   edit();
+  activateTab("#speakit-tab");
 });
 
 document.querySelector("#selector-bell").addEventListener("click", () => {
