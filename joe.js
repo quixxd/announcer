@@ -88,6 +88,10 @@ function demo() {
   bell();
 }
 
+function stop() {
+  // Cancel the speechSynthesis instance
+  window.speechSynthesis.cancel();
+}
 
 
 function voice() {
@@ -95,13 +99,13 @@ function voice() {
   speech.text = document.querySelector("textarea").value;
 
   // Start Speaking
+  window.speechSynthesis.cancel();
   window.speechSynthesis.speak(speech);
 }
 
 
 document.querySelector("#stop").addEventListener("click", () => {
-  // Cancel the speechSynthesis instance
-  window.speechSynthesis.cancel();
+  stop();
 
   if (timerVoice != null) {
     clearTimeout(timerVoice);
