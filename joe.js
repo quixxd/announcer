@@ -32,6 +32,7 @@ document.querySelector("#rate").addEventListener("input", () => {
   document.querySelector("#rate-label").innerHTML = rate;
 });
 
+/*
 document.querySelector("#volume").addEventListener("input", () => {
   // Get volume Value from the input
   const volume = document.querySelector("#volume").value;
@@ -42,6 +43,7 @@ document.querySelector("#volume").addEventListener("input", () => {
   // Update the volume label
   document.querySelector("#volume-label").innerHTML = volume;
 });
+*/
 
 document.querySelector("#pitch").addEventListener("input", () => {
   // Get pitch Value from the input
