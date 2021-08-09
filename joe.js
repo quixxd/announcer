@@ -84,7 +84,7 @@ function bell() {
 }
 
 function demo() {
-  document.querySelector("textarea").value = "This is a demonstration. You can change this text as you wish.";
+  document.querySelector("textarea").value = "This is a demonstration. You can change this voice, and customize the text.";
   bell();
 }
 
